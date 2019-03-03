@@ -14,30 +14,38 @@ namespace ConsoleApplicationForlearning
             Console.WriteLine("Enter Second Number...");
             int secondNumber = int.Parse(Console.ReadLine());
 
+
             Console.WriteLine($"Select an Operator: {operators}");
             string operations = Console.ReadLine();
 
-            switch (operations)
+            GetOperator(operations, calc, firstNumber, secondNumber);
+
+
+            Console.ReadKey();
+        }
+
+
+
+        static void GetOperator(string operand, Calculate calc, int firtNum, int secondNum)
+        {
+            switch (operand)
             {
                 case "+":
-                    Console.WriteLine($"Sum of two number is: {calc.Add(firstNumber, secondNumber)}");
+                    Console.WriteLine($"Sum of two number is: {calc.Add(firtNum, secondNum)}");
                     break;
                 case "-":
-                    Console.WriteLine($"Difference of two number is: {calc.Sub(firstNumber, secondNumber)}");
+                    Console.WriteLine($"Difference of two number is: {calc.Sub(firtNum, secondNum)}");
                     break;
                 case "*":
-                    Console.WriteLine($"Multiplied of two number is: {calc.Multi(firstNumber, secondNumber)}");
+                    Console.WriteLine($"Multiplied of two number is: {calc.Multi(firtNum, secondNum)}");
                     break;
                 case "/":
-                    Console.WriteLine($"Division of two number is: {calc.Devide(firstNumber, secondNumber)}");
+                    Console.WriteLine($"Division of two number is: {calc.Devide(firtNum, secondNum)}");
                     break;
                 default:
                     Console.WriteLine("Something went wrong");
                     break;
             }
-
-
-            Console.ReadKey();
         }
 
     }
