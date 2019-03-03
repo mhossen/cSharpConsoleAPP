@@ -9,8 +9,10 @@ namespace ConsoleApplicationForlearning
         public static void Main(string[] args)
         {
             Calculate calc = new Calculate();
+
             Console.WriteLine("Enter First Number...");
             int firstNumber = int.Parse(Console.ReadLine());
+
             Console.WriteLine("Enter Second Number...");
             int secondNumber = int.Parse(Console.ReadLine());
 
