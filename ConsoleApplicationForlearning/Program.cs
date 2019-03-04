@@ -8,27 +8,52 @@ namespace ConsoleApplicationForlearning
         static string operators = "+ - * /";
         public static void Main(string[] args)
         {
-            Calculate calc = new Calculate();
-
-            Console.WriteLine("Enter First Number...");
-            int firstNumber = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter Second Number...");
-            int secondNumber = int.Parse(Console.ReadLine());
-
-
-            Console.WriteLine($"Select an Operator: {operators}");
-            string operations = Console.ReadLine();
-
-            GetOperator(operations, calc, firstNumber, secondNumber);
-
+            SelectCorrectValue();
 
             Console.ReadKey();
         }
 
 
+        public static void SelectCorrectValue()
+        {
+            string firstNumber = string.Empty;
+            string secondNumber = string.Empty;
+            string respone = string.Empty;
+            do
+            {
 
-        static void GetOperator(string operand, Calculate calc, int firtNum, int secondNum)
+                Calculate calc = new Calculate();
+
+                do
+                {
+                    Console.WriteLine("Enter First Number...");
+                    firstNumber = Console.ReadLine();
+
+                } while (int.TryParse(firstNumber, out int value) == false);
+
+                do
+                {
+
+                    Console.WriteLine("Enter Second Number...");
+                    secondNumber = Console.ReadLine();
+                } while (int.TryParse(secondNumber, out int value) == false);
+
+
+
+                Console.WriteLine($"Select an Operator: {operators}");
+                string operations = Console.ReadLine();
+
+                GetOperator(operations, calc, Convert.ToInt32(firstNumber), Convert.ToInt32(secondNumber));
+                Console.WriteLine("Would you like to exit? Type [Yes] to exit!!");
+                respone = Console.ReadLine();
+            } while (!respone.ToLower().Equals("yes"));
+
+            Console.WriteLine("Press any key to exit...");
+        }
+
+
+
+        private static void GetOperator(string operand, Calculate calc, int firtNum, int secondNum)
         {
             switch (operand)
             {
