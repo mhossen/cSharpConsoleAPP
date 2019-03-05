@@ -4,13 +4,38 @@ namespace ConsoleApplicationForlearning
 {
     public class Program
     {
-
+        static DBConfig dbContext = new DBConfig();
         static string operators = "+ - * /";
         public static void Main(string[] args)
         {
-            SelectCorrectValue();
+            // SelectCorrectValue();
+            var data = SaveEmployeeData();
+
+            dbContext.UpdateEmployee(data.FirstName, data.LastName, data.Email, data.Gender, data.Age);
+
+
 
             Console.ReadKey();
+        }
+
+        public static Employee SaveEmployeeData()
+        {
+            Employee employee = new Employee();
+            Console.WriteLine("Enter First Name...");
+            employee.FirstName = Console.ReadLine();
+
+            Console.WriteLine("Enter Last Name...");
+            employee.LastName = Console.ReadLine();
+
+            Console.WriteLine("Enter Email...");
+            employee.Email = Console.ReadLine();
+
+            Console.WriteLine("Enter Gender for [Male] or [Female]...");
+            employee.Gender = Console.ReadLine();
+
+            Console.WriteLine("Enter Age...");
+            employee.Age = Convert.ToInt32(Console.ReadLine());
+            return employee;
         }
 
 
