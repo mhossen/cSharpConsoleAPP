@@ -1,4 +1,4 @@
-﻿namespace ConsoleApplicationForlearning
+﻿namespace ConsoleApplicationForlearning.Utility
 {
     public class Calculate
     {

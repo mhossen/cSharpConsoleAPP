@@ -1,4 +1,4 @@
-﻿namespace ConsoleApplicationForlearning
+﻿namespace ConsoleApplicationForlearning.Data
 {
     public class Employee
     {

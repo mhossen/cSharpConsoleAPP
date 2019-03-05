@@ -1,19 +1,24 @@
-﻿using System;
+﻿using ConsoleApplicationForlearning.Controller;
+using ConsoleApplicationForlearning.Data;
+using ConsoleApplicationForlearning.Utility;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConsoleApplicationForlearning
 {
     public class Program
     {
-        static DBConfig dbContext = new DBConfig();
+
         static string operators = "+ - * /";
         public static void Main(string[] args)
         {
+            EmployeeController employee = new EmployeeController();
             // SelectCorrectValue();
-            var data = SaveEmployeeData();
+            Employee empolyeeData = SaveEmployeeData();
 
-            dbContext.UpdateEmployee(data.FirstName, data.LastName, data.Email, data.Gender, data.Age);
+            employee.CreateNewEmployee(empolyeeData.FirstName, empolyeeData.LastName, empolyeeData.Email, empolyeeData.Gender, empolyeeData.Age);
 
-
+            Console.WriteLine("Press any key to exit...");
 
             Console.ReadKey();
         }
@@ -38,6 +43,11 @@ namespace ConsoleApplicationForlearning
             return employee;
         }
 
+
+        private static bool IsValidEmail(string email)
+        {
+            return new EmailAddressAttribute().IsValid(email);
+        }
 
         public static void SelectCorrectValue()
         {
