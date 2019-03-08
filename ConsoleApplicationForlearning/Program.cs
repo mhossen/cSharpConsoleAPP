@@ -32,11 +32,17 @@ namespace ConsoleApplicationForlearning
             Console.WriteLine("Enter Last Name...");
             employee.LastName = Console.ReadLine();
 
-            Console.WriteLine("Enter Email...");
-            employee.Email = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Enter Email...");
+                employee.Email = Console.ReadLine();
+            } while (!IsValidEmail(employee.Email));
 
-            Console.WriteLine("Enter Gender for [Male] or [Female]...");
-            employee.Gender = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Enter Gender for [Male] or [Female]...");
+                employee.Gender = Console.ReadLine();
+            } while (!(employee.Gender.Equals("Male") || employee.Gender.Equals("Female")));
 
             Console.WriteLine("Enter Age...");
             employee.Age = Convert.ToInt32(Console.ReadLine());
