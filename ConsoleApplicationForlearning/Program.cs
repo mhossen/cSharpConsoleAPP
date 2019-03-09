@@ -13,7 +13,7 @@ namespace ConsoleApplicationForlearning
         public static void Main(string[] args)
         {
             EmployeeController employee = new EmployeeController();
-            // SelectCorrectValue();
+
             Employee empolyeeData = SaveEmployeeData();
 
             employee.CreateNewEmployee(empolyeeData.FirstName, empolyeeData.LastName, empolyeeData.Email, empolyeeData.Gender, empolyeeData.Age);
@@ -26,22 +26,41 @@ namespace ConsoleApplicationForlearning
         public static Employee SaveEmployeeData()
         {
             Employee employee = new Employee();
-            Console.WriteLine("Enter First Name...");
-            employee.FirstName = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Enter First Name...");
+                employee.FirstName = Console.ReadLine();
+                if (employee.FirstName.Length < 3)
+                    Console.WriteLine("First name must be atleast 3 charecters long...");
+            } while (employee.FirstName.Length < 3);
 
-            Console.WriteLine("Enter Last Name...");
-            employee.LastName = Console.ReadLine();
+            do
+            {
+
+                Console.WriteLine("Enter Last Name...");
+                employee.LastName = Console.ReadLine();
+
+                if (employee.LastName.Length < 3)
+                    Console.WriteLine("Last name must be atleast 3 charecters long...");
+            } while (employee.LastName.Length < 3);
 
             do
             {
                 Console.WriteLine("Enter Email...");
                 employee.Email = Console.ReadLine();
+
+                if (!IsValidEmail(employee.Email))
+                    Console.WriteLine("Please enter valid email format");
+
             } while (!IsValidEmail(employee.Email));
 
             do
             {
                 Console.WriteLine("Enter Gender for [Male] or [Female]...");
                 employee.Gender = Console.ReadLine();
+
+                if (!(employee.Gender.Equals("Male") || employee.Gender.Equals("Female")))
+                    Console.WriteLine("Please enter only Male or Female");
             } while (!(employee.Gender.Equals("Male") || employee.Gender.Equals("Female")));
 
             Console.WriteLine("Enter Age...");
