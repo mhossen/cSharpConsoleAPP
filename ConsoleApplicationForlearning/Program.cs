@@ -67,7 +67,7 @@ namespace ConsoleApplicationForlearning
             Console.WriteLine("Enter Age...");
             employee.Age = Convert.ToInt32(Console.ReadLine());
             return employee;
-        }
+        } 
 
 
         private static bool IsValidEmail(string email)
