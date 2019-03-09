@@ -30,6 +30,7 @@ namespace ConsoleApplicationForlearning
             {
                 Console.WriteLine("Enter First Name...");
                 employee.FirstName = Console.ReadLine();
+
                 if (employee.FirstName.Length < 3)
                     Console.WriteLine("First name must be atleast 3 charecters long...");
             } while (employee.FirstName.Length < 3);
