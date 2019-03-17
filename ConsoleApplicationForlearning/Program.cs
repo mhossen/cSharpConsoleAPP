@@ -3,6 +3,7 @@ using ConsoleApplicationForlearning.Data;
 using ConsoleApplicationForlearning.Utility;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace ConsoleApplicationForlearning
 {
@@ -12,11 +13,23 @@ namespace ConsoleApplicationForlearning
         static string operators = "+ - * /";
         public static void Main(string[] args)
         {
-            EmployeeController employee = new EmployeeController();
+            EmployeeController empController = new EmployeeController();
 
-            Employee empolyeeData = SaveEmployeeData();
+            // Employee empolyeeData = SaveEmployeeData();
 
-            employee.CreateNewEmployee(empolyeeData.FirstName, empolyeeData.LastName, empolyeeData.Email, empolyeeData.Gender, empolyeeData.Age);
+            //  employee.CreateNewEmployee(empolyeeData.FirstName, empolyeeData.LastName, empolyeeData.Email, empolyeeData.Gender, empolyeeData.Age);
+
+            Console.WriteLine("Enter employee Id....");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+
+            //var getData = employee.GetEmployeeById(id);
+            var getData = empController.GetEmployees();
+
+            Employee employee = getData.Where(e => e.Id.Equals(id)).FirstOrDefault();
+            Console.WriteLine($"FirstName: {employee.FirstName}, LastName: {employee.LastName}, Email: {employee.Email}, Age: {employee.Age}");
+
+
 
             Console.WriteLine("Press any key to exit...");
 
@@ -67,7 +80,7 @@ namespace ConsoleApplicationForlearning
             Console.WriteLine("Enter Age...");
             employee.Age = Convert.ToInt32(Console.ReadLine());
             return employee;
-        } 
+        }
 
 
         private static bool IsValidEmail(string email)
